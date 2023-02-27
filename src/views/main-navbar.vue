@@ -16,16 +16,6 @@
         </el-menu-item>
       </el-menu>
       <el-menu class="aui-navbar__menu" mode="horizontal">
-        <el-menu-item index="2">
-          <a href="https://www.renren.io/" target="_blank">
-            <svg class="icon-svg aui-navbar__icon-menu" aria-hidden="true"><use xlink:href="#icon-earth"></use></svg>
-          </a>
-        </el-menu-item>
-        <el-menu-item index="2">
-          <a href="https://gitee.com/renrenio/renren-security" target="_blank">
-            <svg class="icon-svg aui-navbar__icon-menu" aria-hidden="true"><use xlink:href="#gitee"></use></svg>
-          </a>
-        </el-menu-item>
         <el-menu-item index="4" @click="fullscreenHandle()">
           <svg class="icon-svg aui-navbar__icon-menu" aria-hidden="true"><use xlink:href="#icon-fullscreen"></use></svg>
         </el-menu-item>

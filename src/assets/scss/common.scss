@@ -264,7 +264,8 @@ img {
   display: flex;
   align-items: stretch;
   height: $navbar--height;
-  background-color: $--color-primary;
+  background-color: #f3a95e;
+  //background-color: $--color-primary;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, .05);
   &--colorful {
     .aui-navbar__body {

@@ -3,8 +3,8 @@ const t = {}
 t.loading = '加载中...'
 
 t.brand = {}
-t.brand.lg = '人人权限系统'
-t.brand.mini = '人人'
+t.brand.lg = 'Moments'
+t.brand.mini = 'M'
 
 t.add = '新增'
 t.delete = '删除'
@@ -71,8 +71,7 @@ t.login.title = '登录'
 t.login.username = '用户名'
 t.login.password = '密码'
 t.login.captcha = '验证码'
-t.login.demo = '在线演示'
-t.login.copyright = '人人开源'
+t.login.copyright = '© 2023 Moments'
 
 t.schedule = {}
 t.schedule.beanName = 'bean名称'
@@ -117,7 +116,7 @@ t.oss.qiniuSecretKeyTips = '七牛SecretKey'
 t.oss.qiniuBucketName = '空间名'
 t.oss.qiniuBucketNameTips = '七牛存储空间名'
 t.oss.aliyunDomain = '域名'
-t.oss.aliyunDomainTips = '阿里云绑定的域名，如：http://cdn.renren.io'
+t.oss.aliyunDomainTips = '阿里云绑定的域名，如：https://cdn.moments.io'
 t.oss.aliyunPrefix = '路径前缀'
 t.oss.aliyunPrefixTips = '不设置默认为空'
 t.oss.aliyunEndPoint = 'EndPoint'
