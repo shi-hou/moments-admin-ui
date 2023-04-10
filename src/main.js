@@ -12,6 +12,9 @@ import renRadioGroup from '@/components/ren-radio-group'
 import renSelect from '@/components/ren-select'
 import renDeptTree from '@/components/ren-dept-tree'
 import renRegionTree from '@/components/ren-region-tree'
+import renAvatar from '@/components/ren-avatar'
+import renUpload from '@/components/ren-upload'
+import ren9BoxGrid from '@/components/ren-9-box-grid'
 import { hasPermission, getDictLabel } from '@/utils'
 import cloneDeep from 'lodash/cloneDeep'
 
@@ -26,6 +29,9 @@ Vue.use(renRadioGroup)
 Vue.use(renSelect)
 Vue.use(renDeptTree)
 Vue.use(renRegionTree)
+Vue.use(renAvatar)
+Vue.use(renUpload)
+Vue.use(ren9BoxGrid)
 
 // 挂载全局
 Vue.prototype.$http = http

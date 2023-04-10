@@ -13,19 +13,25 @@
         </el-form-item>
       </el-form>
       <el-table
-        v-loading="dataListLoading"
-        :data="dataList"
-        border
-        @selection-change="dataListSelectionChangeHandle"
-        @sort-change="dataListSortChangeHandle"
-        style="width: 100%;">
+          v-loading="dataListLoading"
+          :data="dataList"
+          border
+          @selection-change="dataListSelectionChangeHandle"
+          @sort-change="dataListSortChangeHandle"
+          style="width: 100%;">
         <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
         <el-table-column prop="url" :label="$t('oss.url')" header-align="center" align="center">
           <template slot-scope="scope">
-            <a :href="scope.row.url">{{scope.row.url}}</a>
+            <el-link :href="scope.row.url" target="_blank" :underline="false">{{ scope.row.url }}</el-link>
           </template>
         </el-table-column>
-        <el-table-column prop="createDate" :label="$t('oss.createDate')" sortable="custom" header-align="center" align="center" width="180"></el-table-column>
+        <el-table-column prop="image" :label="$t('oss.image')" header-align="center" align="center" width="250">
+          <template slot-scope="scope">
+            <el-image :src="scope.row.url" fit="contain" style="height: 150px" :preview-src-list="[scope.row.url]"/>
+          </template>
+        </el-table-column>
+        <el-table-column prop="createDate" :label="$t('oss.createDate')" sortable="custom" header-align="center"
+                         align="center" width="180"></el-table-column>
         <el-table-column :label="$t('handle')" fixed="right" header-align="center" align="center" width="150">
           <template slot-scope="scope">
             <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">{{ $t('delete') }}</el-button>
@@ -33,13 +39,13 @@
         </el-table-column>
       </el-table>
       <el-pagination
-        :current-page="page"
-        :page-sizes="[10, 20, 50, 100]"
-        :page-size="limit"
-        :total="total"
-        layout="total, sizes, prev, pager, next, jumper"
-        @size-change="pageSizeChangeHandle"
-        @current-change="pageCurrentChangeHandle">
+          :current-page="page"
+          :page-sizes="[10, 20, 50, 100]"
+          :page-size="limit"
+          :total="total"
+          layout="total, sizes, prev, pager, next, jumper"
+          @size-change="pageSizeChangeHandle"
+          @current-change="pageCurrentChangeHandle">
       </el-pagination>
       <!-- 弹窗, 云存储配置 -->
       <config v-if="configVisible" ref="config"></config>
@@ -53,9 +59,10 @@
 import mixinViewModule from '@/mixins/view-module'
 import Config from './oss-config'
 import Upload from './oss-upload'
+
 export default {
   mixins: [mixinViewModule],
-  data () {
+  data() {
     return {
       mixinViewModuleOptions: {
         getDataListURL: '/sys/oss/page',
@@ -74,14 +81,14 @@ export default {
   },
   methods: {
     // 云存储配置
-    configHandle () {
+    configHandle() {
       this.configVisible = true
       this.$nextTick(() => {
         this.$refs.config.init()
       })
     },
     // 上传文件
-    uploadHandle () {
+    uploadHandle() {
       this.uploadVisible = true
       this.$nextTick(() => {
         this.$refs.upload.init()

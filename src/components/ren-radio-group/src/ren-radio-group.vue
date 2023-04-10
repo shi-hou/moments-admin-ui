@@ -1,5 +1,5 @@
 <template>
-  <el-radio-group :value="value+''" @input="$emit('input', $event)">
+  <el-radio-group :value="value+''" @input="$emit('input', $event)" :disabled="disabled">
     <el-radio :label="data.dictValue" v-for="data in dataList" :key="data.dictValue">{{data.dictLabel}}</el-radio>
   </el-radio-group>
 </template>
@@ -14,7 +14,11 @@ export default {
   },
   props: {
     value: [Number, String],
-    dictType: String
+    dictType: String,
+    disabled: {
+      default: false,
+      type: Boolean
+    },
   }
 }
 </script>

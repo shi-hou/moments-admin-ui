@@ -9,25 +9,35 @@
     <div class="aui-navbar__body">
       <el-menu class="aui-navbar__menu mr-auto" mode="horizontal">
         <el-menu-item index="1" @click="$store.state.sidebarFold = !$store.state.sidebarFold">
-          <svg class="icon-svg aui-navbar__icon-menu aui-navbar__icon-menu--switch" aria-hidden="true"><use xlink:href="#icon-outdent"></use></svg>
+          <svg class="icon-svg aui-navbar__icon-menu aui-navbar__icon-menu--switch" aria-hidden="true">
+            <use xlink:href="#icon-outdent"></use>
+          </svg>
         </el-menu-item>
         <el-menu-item index="2" @click="refresh()">
-          <svg class="icon-svg aui-navbar__icon-menu aui-navbar__icon-menu--refresh" aria-hidden="true"><use xlink:href="#icon-sync"></use></svg>
+          <svg class="icon-svg aui-navbar__icon-menu aui-navbar__icon-menu--refresh" aria-hidden="true">
+            <use xlink:href="#icon-sync"></use>
+          </svg>
         </el-menu-item>
       </el-menu>
       <el-menu class="aui-navbar__menu" mode="horizontal">
         <el-menu-item index="4" @click="fullscreenHandle()">
-          <svg class="icon-svg aui-navbar__icon-menu" aria-hidden="true"><use xlink:href="#icon-fullscreen"></use></svg>
+          <svg class="icon-svg aui-navbar__icon-menu" aria-hidden="true">
+            <use xlink:href="#icon-fullscreen"></use>
+          </svg>
         </el-menu-item>
         <el-menu-item index="5" class="aui-navbar__avatar">
           <el-dropdown placement="bottom" :show-timeout="0">
             <span class="el-dropdown-link">
-              <img src="~@/assets/img/avatar.png">
+<!--              <img src="~@/assets/img/avatar.png">-->
+              <ren-avatar :size="36" :src="$store.state.user.avatar" style="margin-right: 5px;"/>
               <span>{{ $store.state.user.name }}</span>
               <i class="el-icon-arrow-down"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item @click.native="updatePasswordHandle()">{{ $t('updatePassword.title') }}</el-dropdown-item>
+              <el-dropdown-item @click.native="updatePasswordHandle()">{{
+                  $t('updatePassword.title')
+                }}
+              </el-dropdown-item>
               <el-dropdown-item @click.native="logoutHandle()">{{ $t('logout') }}</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
@@ -41,10 +51,11 @@
 <script>
 import screenfull from 'screenfull'
 import UpdatePassword from './main-navbar-update-password'
-import { clearLoginInfo } from '@/utils'
+import {clearLoginInfo} from '@/utils'
+
 export default {
   inject: ['refresh'],
-  data () {
+  data() {
     return {
       updatePasswordVisible: false,
       messageTip: false
@@ -55,7 +66,7 @@ export default {
   },
   methods: {
     // 全屏
-    fullscreenHandle () {
+    fullscreenHandle() {
       if (!screenfull.enabled) {
         return this.$message({
           message: this.$t('fullscreen.prompt'),
@@ -66,27 +77,29 @@ export default {
       screenfull.toggle()
     },
     // 修改密码
-    updatePasswordHandle () {
+    updatePasswordHandle() {
       this.updatePasswordVisible = true
       this.$nextTick(() => {
         this.$refs.updatePassword.init()
       })
     },
     // 退出
-    logoutHandle () {
-      this.$confirm(this.$t('prompt.info', { 'handle': this.$t('logout') }), this.$t('prompt.title'), {
+    logoutHandle() {
+      this.$confirm(this.$t('prompt.info', {'handle': this.$t('logout')}), this.$t('prompt.title'), {
         confirmButtonText: this.$t('confirm'),
         cancelButtonText: this.$t('cancel'),
         type: 'warning'
       }).then(() => {
-        this.$http.post('/logout').then(({ data: res }) => {
+        this.$http.post('/logout').then(({data: res}) => {
           if (res.code !== 0) {
             return this.$message.error(res.msg)
           }
           clearLoginInfo()
-          this.$router.push({ name: 'login' })
-        }).catch(() => {})
-      }).catch(() => {})
+          this.$router.push({name: 'login'})
+        }).catch(() => {
+        })
+      }).catch(() => {
+      })
     }
   }
 }

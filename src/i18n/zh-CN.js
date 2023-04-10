@@ -100,6 +100,7 @@ t.oss = {}
 t.oss.config = '云存储配置'
 t.oss.upload = '上传文件'
 t.oss.url = 'URL地址'
+t.oss.image = '图片预览'
 t.oss.createDate = '创建时间'
 t.oss.type = '类型'
 t.oss.type1 = '七牛'

@@ -85,6 +85,7 @@ export default {
         }
         this.$store.state.user.id = res.data.id
         this.$store.state.user.name = res.data.username
+        this.$store.state.user.avatar = res.data.avatar
         this.$store.state.user.superAdmin = res.data.superAdmin
       }).catch(() => {})
     },
