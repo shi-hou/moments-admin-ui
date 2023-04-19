@@ -4,7 +4,7 @@
         :size="size"
     >
       <el-image fit="cover" :src="src ? src : 'http://moments-image.oss-cn-shenzhen.aliyuncs.com/20230316/b7e357f25f62493185763d5266aafc42.png'"
-                width="100%" height="100%"/>
+                style="height: 100%; width: 100%"/>
     </el-avatar>
   </div>
 </template>
