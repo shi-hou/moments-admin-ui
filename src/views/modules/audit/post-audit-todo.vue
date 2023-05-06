@@ -5,9 +5,9 @@
                 style="width: 100%;">
         <el-table-column type="selection" header-align="center" align="center" width="50"></el-table-column>
         <el-table-column prop="userId" label="用户ID" header-align="center" align="center"></el-table-column>
-        <el-table-column prop="previewImageUrl" label="头图" header-align="center" align="center">
+        <el-table-column prop="previewImageUrl" label="头图" header-align="center" align="center" width="150">
           <template slot-scope="scope">
-            <el-image :src="scope.row.previewImageUrl"/>
+            <el-image :src="scope.row.previewImageUrl" style="height: 100%"/>
           </template>
         </el-table-column>
         <el-table-column prop="images" label="图片数" header-align="center" align="center"></el-table-column>
